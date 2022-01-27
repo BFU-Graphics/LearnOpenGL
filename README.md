@@ -6,3 +6,5 @@ Learn OpenGL from scratch
 ```cmake
 -DCMAKE_INSTALL_PREFIX="../../../external"
 ```
+
+Xayah-dev README
