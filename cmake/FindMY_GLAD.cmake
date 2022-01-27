@@ -1,0 +1,1 @@
+set(GLAD_SRC ${MY_EXTERNAL_DIR}/src/glad.c)
