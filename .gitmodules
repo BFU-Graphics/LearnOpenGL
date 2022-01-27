@@ -10,3 +10,6 @@
 [submodule "vendor/stb"]
 	path = vendor/stb
 	url = git@github.com:nothings/stb.git
+[submodule "box2d"]
+	path = vendor/box2d
+	url = git@github.com:erincatto/box2d.git
