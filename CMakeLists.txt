@@ -11,4 +11,4 @@ find_package(MY_GLAD REQUIRED)
 include_directories(${MY_EXTERNAL_DIR}/include)
 link_directories(${MY_EXTERNAL_DIR}/bin external/lib)
 
-add_subdirectory(HelloTriangle)
+add_subdirectory(HelloWorld)
