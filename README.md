@@ -28,3 +28,7 @@ Goto [Graphics-Dependencies](https://github.com/BFU-Graphics/Graphics-Dependenci
 
 ### III. build LearnOpenGL
 
+1. Open Project in Clion
+2. Set Build Type to Release
+3. <u>Build</u> -> <u>Build Project</u>
+
