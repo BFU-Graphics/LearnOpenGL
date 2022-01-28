@@ -21,7 +21,7 @@ int main()
 
     world.set_process_input(process_input);
 
-    HelloWorld::Shader shader("common.vert", "common.frag");
+    HelloWorld::Shader  shader("common.vert", "common.frag");
 
     float vertices[] = {
             0.5f, 0.5f, 0.0f,  // top right
@@ -37,7 +37,6 @@ int main()
 
     HelloWorld::Object obj(vertices, sizeof(vertices), indices, sizeof(indices));
     obj.shader = &shader;
-    obj.textures.emplace_back();
 
     world.add_object(&obj);
 

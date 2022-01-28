@@ -76,11 +76,7 @@ void World::render_loop()
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
         for (auto &obj: world_objects_)
-        {
-            obj->shader->use();
-            glBindVertexArray(obj->VAO_);
-            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        }
+            obj->render();
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------

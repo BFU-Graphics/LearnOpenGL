@@ -5,8 +5,9 @@ add_definitions(
 )
 
 file(GLOB MY_SRCS src/*.h src/*.cpp)
-file(GLOB MY_TESTS test/main.cpp)
 
+# TEST BasicFrameWork
+file(GLOB MY_TESTS test/BasicFrameWork/main.cpp)
 add_executable(HelloWorld ${MY_SRCS} ${MY_TESTS})
 target_include_directories(
         HelloWorld
@@ -15,6 +16,22 @@ target_include_directories(
 )
 target_link_libraries(
         HelloWorld
+        PRIVATE
+        ${ASSIMP_LIBRARIES}
+        glfw3
+        glad
+)
+
+# TEST WithTexture
+file(GLOB WithTexture_src test/WithTexture/main.cpp)
+add_executable(WithTexture ${MY_SRCS} ${WithTexture_src})
+target_include_directories(
+        WithTexture
+        PRIVATE
+        src
+)
+target_link_libraries(
+        WithTexture
         PRIVATE
         ${ASSIMP_LIBRARIES}
         glfw3

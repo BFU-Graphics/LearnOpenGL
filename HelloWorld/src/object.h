@@ -18,8 +18,13 @@ namespace HelloWorld
     public:
         Object(float *vertices, int vertices_size, unsigned int *indices, int indices_size);
 
+        Object(float *vertices, int vertices_size, float *text_coord, int text_coord_size, unsigned int *indices, int indices_size);
+
     public:
-        Shader *shader;
+        void render();
+
+    public:
+        Shader                 *shader;
         std::vector<Texture *> textures;
     public:
         unsigned int VAO_;
