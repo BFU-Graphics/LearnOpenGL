@@ -36,8 +36,10 @@ int main()
     };
 
     HelloWorld::Object obj(vertices, sizeof(vertices), indices, sizeof(indices));
+    obj.shader = &shader;
+    obj.textures.emplace_back();
 
-    world.add_object(&obj, &shader);
+    world.add_object(&obj);
 
     world.render_loop();
 

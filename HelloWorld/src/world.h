@@ -25,7 +25,7 @@ namespace HelloWorld
 
         void render_loop();
 
-        void add_object(Object *obj, Shader *shader);
+        void add_object(Object *obj);
 
     public:
         void set_process_input(void(*process_input)(GLFWwindow *, World *));
@@ -36,9 +36,9 @@ namespace HelloWorld
         bool initGL(int width, int height);
 
     private:
-        GLFWwindow                   *window_;
-        std::map<Object *, Shader *> world_objects_;
-        bool                         wireframe_mode;
+        GLFWwindow            *window_;
+        std::vector<Object *> world_objects_;
+        bool                  wireframe_mode;
 
         void (*process_input_)(GLFWwindow *, World *);
     };
