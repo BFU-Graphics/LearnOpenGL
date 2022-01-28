@@ -6,7 +6,7 @@ add_definitions(
 file(GLOB MY_SRCS src/*.h src/*.cpp)
 file(GLOB MY_TESTS test/main.cpp)
 
-add_executable(HelloWorld ${MY_SRCS} ${MY_TESTS} ${GLAD_SRC})
+add_executable(HelloWorld ${MY_SRCS} ${MY_TESTS})
 target_include_directories(
         HelloWorld
         PRIVATE
