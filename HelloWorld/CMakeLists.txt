@@ -17,4 +17,5 @@ target_link_libraries(
         PRIVATE
         ${ASSIMP_LIBRARIES}
         glfw3
+        glad
 )
