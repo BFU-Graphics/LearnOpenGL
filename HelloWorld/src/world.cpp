@@ -3,11 +3,6 @@
  * @date 01/27, 2022
  */
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
-#include <box2d/box2d.h>
-
 #include "world.h"
 
 #include <iostream>
@@ -15,9 +10,6 @@
 using namespace HelloWorld;
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
-//
-//void processInput(GLFWwindow *window);
-
 
 World::World(int width, int height)
 {
@@ -83,15 +75,8 @@ void World::render_loop()
         else
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-        for (auto &pair: world_objects_)
-        {
-            Object *obj        = pair.first;
-            Shader *shader_ptr = pair.second;
-
-            shader_ptr->use();
-            glBindVertexArray(obj->VAO_);
-            glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-        }
+        for (auto &obj: world_objects_)
+            obj->render();
 
         // glfw: swap buffers and poll IO events (keys pressed/released, mouse moved etc.)
         // -------------------------------------------------------------------------------
@@ -101,9 +86,9 @@ void World::render_loop()
     glfwTerminate();
 }
 
-void World::add_object(Object *obj, Shader *shader)
+void World::add_object(Object *obj)
 {
-    world_objects_[obj] = shader;
+    world_objects_.emplace_back(obj);
 }
 
 void World::set_process_input(void(*process_input)(GLFWwindow *, World *))

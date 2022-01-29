@@ -11,68 +11,24 @@ First of all, we're going to build our [Graphics Framework](https://github.com/B
 
 [Clion](https://www.jetbrains.com/clion/) is the mostly recommended IDE to build and develop a this repo.
 
-### I. clone the repo
+### I. clone the repo and dependencies repo
 
 ```git
 git clone https://github.com/BFU-Graphics/LearnOpenGL.git
-cd LearnOpenGL
-git submodule init
-git submodule update
+git clone https://github.com/BFU-Graphics/Graphics-Dependencies.git
 ```
 
-### II. configure dependencies one by one
+### II. build dependencies
 
-#### glfw
+Goto [Graphics-Dependencies](https://github.com/BFU-Graphics/Graphics-Dependencies), and follow the build instruction, remember to set cmake options as
 
-1. open `glfw` folder as Clion Project
+```cmake
+-DEXTERNAL_INSTALL_DIR="<the LearnOpenGL root dir>/external"
+```
 
-2. set build type to `Release`
+### III. build LearnOpenGL
 
-3. set CMake options to determine `glfw` install dir
+1. Open Project in Clion
+2. Set Build Type to Release
+3. <u>Build</u> -> <u>Build Project</u>
 
-   ```cmake
-   -DCMAKE_INSTALL_PREFIX="../../../external"
-   ```
-
-4. `Build` -> `Install`
-
-#### assimp
-
-1. open `assimp` folder as Clion Project
-
-2. set build type to `Release`
-
-3. set CMake options to determine `assimp` install dir
-
-   ```cmake
-   -DCMAKE_INSTALL_PREFIX="../../../external"
-   ```
-
-4. turn off the option `BUILD_SHARED_LIBS` in root CMakeLists.txt
-
-   ```cmake
-   OPTION( BUILD_SHARED_LIBS
-     "Build package with shared libraries."
-     ON # turn this to OFF
-   )
-   ```
-
-5. `Reset Cache and Reload Project`
-
-6. `Build` -> `Install`
-
-#### glad
-
-`glad` is recommend to get it from the [webservice](https://glad.dav1d.de/), and directly copy the `include` dir and `src` dir under `external` dir and remenber compile the `glad.c` with your target.
-
-#### glm
-
-`glm` is a header only library, copy `vendor/glm/glm` to `external/include`
-
-#### stb
-
-`stb` is a header only library, copy `vendor/stb` to `external/include`
-
-### III. build repo
-
-Open repo with Clion
