@@ -8,8 +8,10 @@ find_package(MY_GLFW REQUIRED)
 find_package(MY_ASSIMP REQUIRED)
 find_package(MY_GLAD REQUIRED)
 find_package(MY_GLM REQUIRED)
+find_package(MY_VULKAN REQUIRED)
 
 include_directories(${MY_EXTERNAL_DIR}/include)
 link_directories(${MY_EXTERNAL_DIR}/bin external/lib)
 
 add_subdirectory(HelloWorld)
+add_subdirectory(HelloVulkan)
