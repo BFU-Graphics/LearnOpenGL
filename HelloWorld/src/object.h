@@ -32,6 +32,7 @@ namespace HelloWorld
     public:
         unsigned int VAO_;
         unsigned int VAO_light;
+        glm::vec3 position_;
     };
 }
 

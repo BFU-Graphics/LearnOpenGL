@@ -60,21 +60,21 @@ Object::Object(float *vertices, int vertices_size)
     glGenVertexArrays(1, &VAO_);
     glGenBuffers(1, &VBO);
 
-    //glBindVertexArray(VAO_);
+    glBindVertexArray(VAO_);
 
     glBindBuffer(GL_ARRAY_BUFFER, VBO);
     glBufferData(GL_ARRAY_BUFFER, vertices_size, vertices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void *) 0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void *) 0);
     glEnableVertexAttribArray(0);
 
-    glGenVertexArrays(1, &VAO_light);
-    glBindVertexArray(VAO_light);
+//    glGenVertexArrays(1, &VAO_light);
+//    glBindVertexArray(VAO_light);
+//
+//    glBindBuffer(GL_ARRAY_BUFFER, VBO);
 
-    glBindBuffer(GL_ARRAY_BUFFER, VBO);
-
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-    glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 5 * sizeof(float), (void*)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
@@ -99,15 +99,15 @@ void Object::render()
 
     shader->use();//激活着色器
 
-    shader->set_vec3("objectColor", 1.0f, 0.5f, 0.31f);
-    shader->set_vec3("lightColor",  1.0f, 1.0f, 1.0f);
-    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
-    glm::mat4 view = camera.GetViewMatrix();
-    shader->set_mat4("projection", projection);
-    shader->set_mat4("view", view);
-
-    glm::mat4 model = glm::mat4(1.0f);
-    shader->set_mat4("model", model);
+//    shader->set_vec3("objectColor", 1.0f, 0.5f, 0.31f);
+//    shader->set_vec3("lightColor",  1.0f, 1.0f, 1.0f);
+//    glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), (float)SCR_WIDTH / (float)SCR_HEIGHT, 0.1f, 100.0f);
+//    glm::mat4 view = camera.GetViewMatrix();
+//    shader->set_mat4("projection", projection);
+//    shader->set_mat4("view", view);
+//
+//    glm::mat4 model = glm::mat4(1.0f);
+//    shader->set_mat4("model", model);
     //第一次 lightingShader.use();
     // 初始化
 //    glm::mat4 model         = glm::mat4(1.0f); // make sure to initialize matrix to identity matrix first
@@ -155,16 +155,16 @@ void Object::render()
     // this time take the matrix value array's first element as its memory pointer value
 
 //    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
-    shader_->use();
-    shader_->set_mat4("projection", projection);
-    shader_->set_mat4("view", view);
-    model = glm::mat4(1.0f);
-    model = glm::translate(model, lightPos);
-    model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
-    shader_->set_mat4("model", model);
-
-    glBindVertexArray(VAO_light);
-    glDrawArrays(GL_TRIANGLES, 0, 36);
+//    shader_->use();
+//    shader_->set_mat4("projection", projection);
+//    shader_->set_mat4("view", view);
+//    model = glm::mat4(1.0f);
+//    model = glm::translate(model, lightPos);
+//    model = glm::scale(model, glm::vec3(0.2f)); // a smaller cube
+//    shader_->set_mat4("model", model);
+//
+//    glBindVertexArray(VAO_light);
+//    glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
 Object::Object(float *vertices, int vertices_size, float *text_coord, int text_coord_size, unsigned int *indices, int indices_size)

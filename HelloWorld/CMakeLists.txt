@@ -23,17 +23,17 @@ target_link_libraries(
 )
 
 # TEST WithTexture
-file(GLOB WithTexture_src test/WithTexture/main.cpp)
-add_executable(WithTexture ${MY_SRCS} ${WithTexture_src})
-target_include_directories(
-        WithTexture
-        PRIVATE
-        src
-)
-target_link_libraries(
-        WithTexture
-        PRIVATE
-        ${ASSIMP_LIBRARIES}
-        glfw3
-        glad
-)
+#file(GLOB WithTexture_src test/WithTexture/main.cpp)
+#add_executable(WithTexture ${MY_SRCS} ${WithTexture_src})
+#target_include_directories(
+#        WithTexture
+#        PRIVATE
+#        src
+#)
+#target_link_libraries(
+#        WithTexture
+#        PRIVATE
+#        ${ASSIMP_LIBRARIES}
+#        glfw3
+#        glad
+#)
