@@ -71,7 +71,7 @@ Shader::Shader(const std::string &vertex_shader_name, const std::string &fragmen
 
 void Shader::use() const
 {
-    glUseProgram(ID_);
+    glUseProgram(ID_);//在当前激活的着色器程序中设置uniform
 }
 
 void Shader::check_compile_error(unsigned int shader, const std::string &type)
@@ -102,7 +102,16 @@ void Shader::set_bool(const std::string &name, bool value) const
     this->use();
     glUniform1i(glGetUniformLocation(ID_, name.c_str()), (int) value);
 }
+//用glGetUniformLocation查询uniform ourColor的位置值。我们为查询函数提供着色器程序和uniform的名字（这是我们希望获得的位置值的来源）。
+// 如果glGetUniformLocation返回-1就代表没有找到这个位置值。
 
+//OpenGL在其核心是一个C库，所以它不支持类型重载，在函数参数不同的时候就要为其定义新的函数；glUniform是一个典型例子。
+// 这个函数有一个特定的后缀，标识设定的uniform的类型。
+//f	函数需要一个float作为它的值
+//i	函数需要一个int作为它的值
+//ui	函数需要一个unsigned int作为它的值
+//3f	函数需要3个float作为它的值
+//fv	函数需要一个float向量/数组作为它的值
 void Shader::set_int(const std::string &name, int value) const
 {
     this->use();
