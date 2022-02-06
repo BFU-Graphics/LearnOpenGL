@@ -5,9 +5,14 @@
 
 #include "world.h"
 
+#include "texture.h"
+
 #include <iostream>
 
 using namespace HelloWorld;
+
+float deltaTime = 0.0f;
+float lastFrame = 0.0f;
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
@@ -61,14 +66,19 @@ void World::render_loop()
 {
     while (!glfwWindowShouldClose(window_))
     {
+        // per-frame time logic
+        // --------------------
+        float currentFrame = static_cast<float>(glfwGetTime());
+        deltaTime = currentFrame - lastFrame;
+        lastFrame = currentFrame;
         // input
         // -----
         process_input_(window_, this);
 
         // render
         // ------
-        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT| GL_DEPTH_BUFFER_BIT);
 
         if (wireframe_mode)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
