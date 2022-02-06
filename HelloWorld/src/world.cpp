@@ -5,6 +5,8 @@
 
 #include "world.h"
 
+#include "texture.h"
+
 #include <iostream>
 
 using namespace HelloWorld;

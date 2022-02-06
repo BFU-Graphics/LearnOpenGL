@@ -14,9 +14,11 @@ namespace HelloWorld
     {
     public:
         explicit Texture(const std::string& texture_name);
+    public:
 
     public:
         unsigned int ID_;
+        unsigned int ID_1;
     };
 }
 

@@ -10,12 +10,11 @@
 
 #include <string>
 
-namespace HelloWorld
-{
-    class Shader
-    {
+namespace HelloWorld {
+    class Shader {
     public:
-        Shader(const std::string &vertex_shader_name, const std::string &fragment_shader_name, const std::string &geometry_shader_name = "");
+        Shader(const std::string &vertex_shader_name, const std::string &fragment_shader_name,
+               const std::string &geometry_shader_name = "");
 
         void use() const;
 
@@ -49,7 +48,7 @@ namespace HelloWorld
 
     public:
         unsigned int ID_;
-
+        //unsigned int ID_1;
     private:
         static void check_compile_error(unsigned int shader, const std::string &type);
     };

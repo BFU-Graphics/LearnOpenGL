@@ -21,6 +21,8 @@ namespace HelloWorld
         Object(float *vertices, int vertices_size, float *text_coord, int text_coord_size, unsigned int *indices, int indices_size);
 
     public:
+        Object(float *vertices, int vertices_size);
+
         void render();
 
     public:
