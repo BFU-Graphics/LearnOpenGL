@@ -25,8 +25,6 @@ Texture::Texture(const std::string &texture_name)
 
     if (data)
     {
-        if(texture_name=="container.jpg")
-        {
             glGenTextures(1, &ID_1);
             glBindTexture(GL_TEXTURE_2D, ID_1);
             // set the texture wrapping parameters
@@ -47,22 +45,8 @@ Texture::Texture(const std::string &texture_name)
             //GL_LINEAR_MIPMAP_NEAREST	使用最邻近的多级渐远纹理级别，并使用线性插值进行采样
             //GL_NEAREST_MIPMAP_LINEAR	在两个最匹配像素大小的多级渐远纹理之间进行线性插值，使用邻近插值进行采样
             //GL_LINEAR_MIPMAP_LINEAR	在两个邻近的多级渐远纹理之间使用线性插值，并使用线性插值进行采样
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);//多级渐远纹理
-        }else if(texture_name=="awesomeface.png"){
-            glGenTextures(1, &ID_);
-            glBindTexture(GL_TEXTURE_2D, ID_);
-            // set the texture wrapping parameters
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-            // set texture filtering parameters
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-            stbi_set_flip_vertically_on_load(true);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-            glGenerateMipmap(GL_TEXTURE_2D);//多级渐远纹理
-        }
-
     } else
     {
         std::cout << "Failed to load texture:" << texture_name << std::endl;
