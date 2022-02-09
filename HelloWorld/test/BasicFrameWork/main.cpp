@@ -81,7 +81,7 @@ int main() {
     //for (int i = 0; i < 10; ++i) {
         HelloWorld::Object *o = new HelloWorld::Object(vertices, sizeof(vertices));
         HelloWorld::Texture texture1("container2.png");
-
+        //HelloWorld::Texture texture2("container2_specular.png");
         o->shader = &lightingShader;
         o->shader_ = &lightCubeShader;
         //o->position_ = cubePositions[i];
@@ -102,6 +102,6 @@ int main() {
 //    shader.set_int("texture2", 1);
     world.render_loop();
     HelloWorld::Texture texture2("container2_specular.png");
-    world.render_loop();
+    //world.render_loop();
     return 0;
 }

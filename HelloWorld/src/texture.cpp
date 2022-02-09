@@ -25,8 +25,8 @@ Texture::Texture(const std::string &texture_name)
 
     if (data)
     {
-            glGenTextures(1, &ID_1);
-            glBindTexture(GL_TEXTURE_2D, ID_1);
+            glGenTextures(1, &ID_);
+            glBindTexture(GL_TEXTURE_2D, ID_);
             // set the texture wrapping parameters
             //使用glTexParameter*函数对单独的一个坐标轴设置（s、t（如果是使用3D纹理那么还有一个r）它们和x、y、z是等价的）
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);	// set texture wrapping to GL_REPEAT (default wrapping method)

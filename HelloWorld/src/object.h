@@ -31,7 +31,7 @@ namespace HelloWorld
         std::vector<Texture *> textures;
     public:
         unsigned int VAO_;
-        unsigned int VAO_light;//以后要修改只用一个VAO 因为步骤是一样的
+        unsigned int VAO_light;
         glm::vec3 position_;
 
         void render1();

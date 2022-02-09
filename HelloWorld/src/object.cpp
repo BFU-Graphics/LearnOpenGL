@@ -82,8 +82,6 @@ void Object::render() {
     if (!textures.empty()) {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textures.front()->ID_);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, textures.back()->ID_1);
     }
 
     shader->use();//激活着色器
@@ -98,8 +96,6 @@ void Object::render1() {
     if (!textures.empty()) {
         glActiveTexture(GL_TEXTURE0);
         glBindTexture(GL_TEXTURE_2D, textures.front()->ID_);
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, textures.back()->ID_1);
     }
 
     shader_->use();//激活着色器

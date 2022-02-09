@@ -18,7 +18,6 @@ namespace HelloWorld
 
     public:
         unsigned int ID_;
-        unsigned int ID_1;
     };
 }
 
