@@ -6,16 +6,15 @@ add_definitions(
 
 file(GLOB MY_SRCS src/*.h src/*.cpp)
 
-# TEST BasicFrameWork
-file(GLOB MY_TESTS test/BasicFrameWork/main.cpp)
-add_executable(HelloWorld ${MY_SRCS} ${MY_TESTS})
+file(GLOB TEST01 test/test01/main.cpp)
+add_executable(HelloModelTest01 ${MY_SRCS} ${TEST01})
 target_include_directories(
-        HelloWorld
+        HelloModelTest01
         PRIVATE
         src
 )
 target_link_libraries(
-        HelloWorld
+        HelloModelTest01
         PRIVATE
         ${ASSIMP_LIBRARIES}
         glfw

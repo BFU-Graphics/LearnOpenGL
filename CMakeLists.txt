@@ -15,3 +15,4 @@ include_directories(${MY_EXTERNAL_DIR}/include)
 link_directories(${MY_EXTERNAL_DIR}/bin ${MY_EXTERNAL_DIR}/lib)
 
 add_subdirectory(HelloWorld)
+add_subdirectory(HelloModel)
