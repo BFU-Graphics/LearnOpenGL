@@ -96,12 +96,15 @@ void World::render_loop() {
 
         for (auto &obj: world_objects_) {
             obj->shader->use();
-            obj->shader->set_vec3("light.direction", -0.2f, -1.0f, -0.3f);
+            obj->shader->set_vec3("light.position", lightPos);
             obj->shader->set_vec3("viewPos", camera.Position);
 
             obj->shader->set_vec3("light.ambient", 0.2f, 0.2f, 0.2f);
             obj->shader->set_vec3("light.diffuse", 0.5f, 0.5f, 0.5f);
             obj->shader->set_vec3("light.specular", 1.0f, 1.0f, 1.0f);
+            obj->shader->set_float("light.constant", 1.0f);
+            obj->shader->set_float("light.linear", 0.09f);
+            obj->shader->set_float("light.quadratic", 0.032f);
 
             obj->shader->set_float("material.shininess", 32.0f);
 
@@ -123,6 +126,7 @@ void World::render_loop() {
             float angle = 20.0f;
             model = glm::rotate(model, glm::radians(angle), glm::vec3(1.0f, 0.3f, 0.5f));
             obj->shader->set_mat4("model", model);
+
             obj->render();
 //            obj->shader_->use();
 //            //projection = glm::perspective(glm::radians(camera.Zoom), (float) 800 / (float) 600, 0.1f, 100.0f);
