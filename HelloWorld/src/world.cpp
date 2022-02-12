@@ -100,6 +100,7 @@ void World::render_loop() {
             obj->shader->set_vec3("light.position", camera.Position);
             obj->shader->set_vec3("light.direction", camera.Front);
             obj->shader->set_float("light.cutOff", glm::cos(glm::radians(12.5f)));
+            obj->shader->set_float("light.outerCutOff", glm::cos(glm::radians(17.5f)));
             obj->shader->set_vec3("viewPos", camera.Position);
 
             obj->shader->set_vec3("light.ambient", 0.1f, 0.1f, 0.1f);
