@@ -1,4 +1,5 @@
 add_definitions(
+        -DMY_MODEL_DIR="${CMAKE_CURRENT_SOURCE_DIR}/model/"
         -DMY_SHADER_DIR="${CMAKE_CURRENT_SOURCE_DIR}/shader/"
         -DMY_TEXTURE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/texture/"
         -DMY_SRC_DIR="${CMAKE_CURRENT_SOURCE_DIR}/src/"

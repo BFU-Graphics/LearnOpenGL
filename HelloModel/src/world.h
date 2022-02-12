@@ -1,31 +1,21 @@
-/**
- * @author YC XIANG.
- * @date 01/27, 2022
- */
-
 #ifndef LEARNOPENGL_WORLD_H
 #define LEARNOPENGL_WORLD_H
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
-#include "object.h"
-#include "shader.h"
+#include "model.h"
 
-#include <vector>
-#include <map>
-#include <functional>
-
-namespace HelloWorld
+namespace HelloModel
 {
     class World
     {
     public:
-        World(int width, int height);
+        explicit World(int width = 1280, int height = 800);
 
         void render_loop();
 
-        void add_object(Object *obj);
+        void add_model(Model *model);
 
     public:
         void set_process_input(void(*process_input)(GLFWwindow *, World *));
@@ -37,12 +27,12 @@ namespace HelloWorld
 
     private:
         GLFWwindow *window_;
-        std::vector<Object *> world_objects_;
-        bool wireframe_mode;
-
+        bool wireframe_mode_;
         void (*process_input_)(GLFWwindow *, World *);
+
+    private:
+        std::vector<Model *> world_objects_;
     };
 }
-
 
 #endif //LEARNOPENGL_WORLD_H
