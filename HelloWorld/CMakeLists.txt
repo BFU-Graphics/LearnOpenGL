@@ -18,7 +18,7 @@ target_link_libraries(
         HelloWorld
         PRIVATE
         ${ASSIMP_LIBRARIES}
-        glfw3
+        glfw
         glad
 )
 
