@@ -14,10 +14,11 @@ Camera camera;
 float lastX = 800 / 2.0f;
 float lastY = 600 / 2.0f;
 bool firstMouse = true;
+
 float deltaTime = 0.0f;
 float lastFrame = 0.0f;
 
-glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
+//glm::vec3 lightPos(1.2f, 1.0f, 2.0f);
 
 void framebuffer_size_callback(GLFWwindow *window, int width, int height);
 
@@ -96,11 +97,13 @@ void World::render_loop() {
 
         for (auto &obj: world_objects_) {
             obj->shader->use();
-            obj->shader->set_vec3("light.position", lightPos);
+            obj->shader->set_vec3("light.position", camera.Position);
+            obj->shader->set_vec3("light.direction", camera.Front);
+            obj->shader->set_float("light.cutOff", glm::cos(glm::radians(12.5f)));
             obj->shader->set_vec3("viewPos", camera.Position);
 
-            obj->shader->set_vec3("light.ambient", 0.2f, 0.2f, 0.2f);
-            obj->shader->set_vec3("light.diffuse", 0.5f, 0.5f, 0.5f);
+            obj->shader->set_vec3("light.ambient", 0.1f, 0.1f, 0.1f);
+            obj->shader->set_vec3("light.diffuse", 0.8f, 0.8f, 0.8f);
             obj->shader->set_vec3("light.specular", 1.0f, 1.0f, 1.0f);
             obj->shader->set_float("light.constant", 1.0f);
             obj->shader->set_float("light.linear", 0.09f);
