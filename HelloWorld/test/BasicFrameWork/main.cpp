@@ -87,6 +87,7 @@ int main() {
             glm::vec3( 1.5f,  0.2f, -1.5f),
             glm::vec3(-1.3f,  1.0f, -1.5f)
     };
+
     for (int i = 0; i < 10; ++i) {
         HelloWorld::Object *o = new HelloWorld::Object(vertices, sizeof(vertices));
         HelloWorld::Texture texture1("container2.png");
