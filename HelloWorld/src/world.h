@@ -12,15 +12,14 @@
 #include "object.h"
 #include "shader.h"
 #include "texture.h"
+#include "camera.h"
 
 #include <vector>
 #include <map>
 #include <functional>
 
-namespace HelloWorld
-{
-    class World
-    {
+namespace HelloWorld {
+    class World {
     public:
         World(int width, int height);
 
@@ -29,7 +28,7 @@ namespace HelloWorld
         void add_object(Object *obj);
 
     public:
-        void set_process_input(void(*process_input)(GLFWwindow *, World *));
+        void set_process_input(void(*process_input)(GLFWwindow *, World *, Camera *camera, float deltaTime));
 
         void switch_wireframe();
 
@@ -37,11 +36,12 @@ namespace HelloWorld
         bool initGL(int width, int height);
 
     private:
-        GLFWwindow            *window_;
+        GLFWwindow *window_;
         std::vector<Object *> world_objects_;
-        bool                  wireframe_mode;
+        bool wireframe_mode;
 
-        void (*process_input_)(GLFWwindow *, World *);
+        void (*process_input_)(GLFWwindow *, World *, Camera *camera, float deltaTime);
+
     };
 }
 
