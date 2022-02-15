@@ -8,7 +8,7 @@ add_definitions(
 file(GLOB MY_SRCS src/*.h src/*.cpp)
 
 file(GLOB TEST01 test/test01/main.cpp)
-add_executable(HelloModelTest01 ${MY_SRCS} ${TEST01})
+add_executable(HelloModelTest01 ${TEST01} ${MY_SRCS})
 target_include_directories(
         HelloModelTest01
         PRIVATE
