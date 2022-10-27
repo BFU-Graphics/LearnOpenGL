@@ -1,23 +1,25 @@
-add_definitions(
-        -DMY_MODEL_DIR="${CMAKE_CURRENT_SOURCE_DIR}/model/"
-        -DMY_SHADER_DIR="${CMAKE_CURRENT_SOURCE_DIR}/shader/"
-        -DMY_TEXTURE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/texture/"
-        -DMY_SRC_DIR="${CMAKE_CURRENT_SOURCE_DIR}/src/"
-)
-
 file(GLOB MY_SRCS src/*.h src/*.cpp)
-
-file(GLOB TEST01 test/test01/main.cpp)
-add_executable(HelloModelTest01 ${TEST01} ${MY_SRCS})
+file(GLOB TEST01 test/main.cpp)
+add_executable(HelloModel ${TEST01} ${MY_SRCS})
 target_include_directories(
-        HelloModelTest01
-        PRIVATE
+        HelloModel
+        PUBLIC
         src
+        ../deps/stb
 )
 target_link_libraries(
-        HelloModelTest01
-        PRIVATE
-        ${ASSIMP_LIBRARIES}
+        HelloModel
+        PUBLIC
+        assimp::assimp
+        glm::glm
         glfw
         glad
+)
+target_compile_definitions(
+        HelloModel
+        PUBLIC
+        MY_SHADER_DIR="${CMAKE_CURRENT_SOURCE_DIR}/shader/"
+        MY_TEXTURE_DIR="${CMAKE_CURRENT_SOURCE_DIR}/texture/"
+        MY_SRC_DIR="${CMAKE_CURRENT_SOURCE_DIR}/src/"
+        MY_MODEL_DIR="${CMAKE_CURRENT_SOURCE_DIR}/model/"
 )

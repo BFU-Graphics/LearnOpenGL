@@ -1,18 +1,23 @@
-cmake_minimum_required(VERSION 3.15)
-project(LearnOpenGL)
+cmake_minimum_required(VERSION 3.16)
+project(LearnOpenGL VERSION 1.0.1 DESCRIPTION "Learn OpenGL From Scratch" LANGUAGES CXX)
 
-set(CMAKE_CXX_STANDARD 14)
+set(LEARN_OPENGL_DEPS_DIR deps)
 
-set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
-set(MY_EXTERNAL_DIR ${CMAKE_SOURCE_DIR}/../Graphics-Dependencies/install)
-
-find_package(MY_GLFW REQUIRED)
-find_package(MY_ASSIMP REQUIRED)
-find_package(MY_GLAD REQUIRED)
-find_package(MY_GLM REQUIRED)
-
-include_directories(${MY_EXTERNAL_DIR}/include)
-link_directories(${MY_EXTERNAL_DIR}/bin ${MY_EXTERNAL_DIR}/lib)
+# load dependencies
+add_subdirectory("${LEARN_OPENGL_DEPS_DIR}/glfw3/" "${CMAKE_CURRENT_BINARY_DIR}/glfw3")
+add_subdirectory("${LEARN_OPENGL_DEPS_DIR}/glad/" "${CMAKE_CURRENT_BINARY_DIR}/glad")
+add_subdirectory("${LEARN_OPENGL_DEPS_DIR}/glm/" "${CMAKE_CURRENT_BINARY_DIR}/glm")
+set(ASSIMP_BUILD_COLLADA_IMPORTER TRUE)
+set(ASSIMP_BUILD_OBJ_IMPORTER TRUE)
+set(ASSIMP_BUILD_PLY_IMPORTER TRUE)
+set(ASSIMP_BUILD_FBX_IMPORTER TRUE)
+set(ASSIMP_BUILD_GLTF_IMPORTER TRUE)
+set(ASSIMP_BUILD_3DS_IMPORTER TRUE)
+set(ASSIMP_BUILD_STL_IMPORTER TRUE)
+set(ASSIMP_BUILD_BLEND_IMPORTER TRUE)
+set(ASSIMP_BUILD_COLLADA_EXPORTER TRUE)
+add_subdirectory("${LEARN_OPENGL_DEPS_DIR}/assimp/" "${CMAKE_CURRENT_BINARY_DIR}/assimp")
+target_include_directories(glad PUBLIC ${LEARN_OPENGL_DEPS_DIR})
 
 add_subdirectory(HelloWorld)
 add_subdirectory(HelloModel)

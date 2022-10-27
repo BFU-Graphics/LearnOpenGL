@@ -1,0 +1,15 @@
+[submodule "deps/glm"]
+	path = deps/glm
+	url = https://github.com/BFU-Graphics/Hina_glm.git
+[submodule "deps/glad"]
+	path = deps/glad
+	url = https://github.com/BFU-Graphics/Hina_glad.git
+[submodule "deps/glfw3"]
+	path = deps/glfw3
+	url = https://github.com/BFU-Graphics/Hina_glfw3.git
+[submodule "deps/assimp"]
+	path = deps/assimp
+	url = https://github.com/BFU-Graphics/Hina_assimp.git
+[submodule "deps/stb"]
+	path = deps/stb
+	url = https://github.com/BFU-Graphics/Hina_stb.git
