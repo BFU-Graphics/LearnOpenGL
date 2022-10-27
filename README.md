@@ -14,19 +14,10 @@ First of all, we're going to build our [Graphics Framework](https://github.com/B
 ### I. clone the repo and dependencies repo
 
 ```git
-git clone https://github.com/BFU-Graphics/LearnOpenGL.git
-git clone https://github.com/BFU-Graphics/Graphics-Dependencies.git
+git clone --recursive https://github.com/BFU-Graphics/LearnOpenGL.git
 ```
 
-### II. build dependencies
-
-Goto [Graphics-Dependencies](https://github.com/BFU-Graphics/Graphics-Dependencies), and follow the build instruction, remember to set cmake options as
-
-```cmake
--DEXTERNAL_INSTALL_DIR="<the LearnOpenGL root dir>/external"
-```
-
-### III. build LearnOpenGL
+### II. build LearnOpenGL
 
 1. Open Project in Clion
 2. Set Build Type to Release
