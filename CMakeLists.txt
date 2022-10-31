@@ -19,6 +19,4 @@ set(ASSIMP_BUILD_COLLADA_EXPORTER TRUE)
 add_subdirectory("${LEARN_OPENGL_DEPS_DIR}/assimp/" "${CMAKE_CURRENT_BINARY_DIR}/assimp")
 target_include_directories(glad PUBLIC ${LEARN_OPENGL_DEPS_DIR})
 
-add_subdirectory(HelloWorld)
-add_subdirectory(HelloModel)
 add_subdirectory(chapter1)
