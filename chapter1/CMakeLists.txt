@@ -6,8 +6,8 @@ set(SRCS
         04PassValueToShader
         05PassValueToLocation
         06SetUpShaderClass
-        07LoadTexture
-        08SetupARenderObject
+        07SetUpTextureClass
+        08SetupRenderObjectClass
         )
 
 foreach(SRC ${SRCS})
