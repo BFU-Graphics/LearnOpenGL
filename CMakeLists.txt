@@ -21,3 +21,4 @@ target_include_directories(glad PUBLIC ${LEARN_OPENGL_DEPS_DIR})
 
 add_subdirectory(HelloWorld)
 add_subdirectory(HelloModel)
+add_subdirectory(chapter1)
