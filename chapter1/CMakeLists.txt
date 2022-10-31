@@ -5,8 +5,8 @@ set(SRCS
         03ShadersInFile
         04PassValueToShader
         05PassValueToLocation
-        06SetUpShaderClass
-        07SetUpTextureClass
+        06SetupShaderClass
+        07SetupTextureClass
         08SetupRenderObjectClass
         )
 
