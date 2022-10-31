@@ -7,10 +7,11 @@ set(SRCS
         05PassValueToLocation
         06SetUpShaderClass
         07LoadTexture
+        08SetupARenderObject
         )
 
 foreach(SRC ${SRCS})
-    add_executable(${SRC} src/${SRC}.cpp include/shader.h include/shader.cpp include/texture.h include/texture.cpp)
+    add_executable(${SRC} src/${SRC}.cpp include/shader.h include/shader.cpp include/texture.h include/texture.cpp include/renderable_object.h include/renderable_object.cpp)
     target_include_directories(
             ${SRC}
             PRIVATE
