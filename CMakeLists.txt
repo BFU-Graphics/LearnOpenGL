@@ -20,3 +20,4 @@ add_subdirectory("${LEARN_OPENGL_DEPS_DIR}/assimp/" "${CMAKE_CURRENT_BINARY_DIR}
 target_include_directories(glad PUBLIC ${LEARN_OPENGL_DEPS_DIR})
 
 add_subdirectory(chapter1)
+add_subdirectory(chapter2)
