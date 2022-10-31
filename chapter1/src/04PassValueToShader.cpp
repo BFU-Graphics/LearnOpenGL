@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include <fstream>
+#include <cmath>
 
 void init_glfw();
 auto init_glad() -> bool;
@@ -48,7 +49,7 @@ auto main() -> int
          * 我们想要给shader传递一个我们自己想要的值，一定要确保已经使用了这个shader（即上面的glUseProgram），以及一定要保证还没有绘制想要的物体（即下面的glDrawElements）。
          */
         double time_value = glfwGetTime();
-        float green_value = static_cast<float>(sin(time_value) / 2.0 + 0.5);
+        float green_value = static_cast<float>(std::sin(time_value) / 2.0 + 0.5);
         int vertexColorLocation = glGetUniformLocation(shader_program_id, "ourColor");
         glUniform4f(vertexColorLocation, 0.0f, green_value, 0.0f, 1.0f);
         // -------------------- NEW END --------------------
