@@ -145,7 +145,7 @@ auto main() -> int
          */
         glUseProgram(shader_program_id); // 绘制之前一定要指定使用哪个shader program
         glBindVertexArray(triangle_VAO); // 指定想要绘制的图形的数据（这里是两个三角形）
-//        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // 在绘制之前，我们可以选择指定线框模式绘制（如果要回到原来的模式，一定要在设置一遍glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)给它设置回来）
+        //        glPolygonMode(GL_FRONT_AND_BACK, GL_LINE); // 在绘制之前，我们可以选择指定线框模式绘制（如果要回到原来的模式，一定要在设置一遍glPolygonMode(GL_FRONT_AND_BACK, GL_FILL)给它设置回来）
         glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0); // 绘制两个三角形
         // -------------------- NEW END --------------------
 

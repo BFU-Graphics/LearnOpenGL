@@ -24,7 +24,7 @@ Texture::Texture(const std::string &texture_path)
     {
         std::cout << "Failed to load texture" << std::endl;
     }
-    stbi_image_free(data);
+        stbi_image_free(data);
 
     ID = texture_ID;
 }

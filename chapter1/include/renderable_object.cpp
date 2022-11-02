@@ -30,6 +30,11 @@ RenderableObject::RenderableObject(float *vertices_array, int vertices_array_siz
     ID = VAO;
 }
 
+RenderableObject::RenderableObject(const std::string &model_path) : texture(Texture(model_path))
+{
+    ID = 0;
+}
+
 void RenderableObject::render(const Shader &shader)
 {
     shader.use();

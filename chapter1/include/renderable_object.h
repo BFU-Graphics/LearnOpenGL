@@ -18,6 +18,7 @@ public:
 
 public:
     RenderableObject(float vertices_array[], int vertices_array_size, unsigned int indices_array[], int indices_array_size, const std::string &texture_path);
+    RenderableObject(const std::string& model_path);
 
 public:
     void render(const Shader &shader); // 使用这个shader来渲染这个物体
