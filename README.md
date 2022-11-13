@@ -4,7 +4,7 @@
 [![Cmake Build](https://github.com/BFU-Graphics/LearnOpenGL/actions/workflows/macos.yml/badge.svg)](https://github.com/BFU-Graphics/LearnOpenGL/actions/workflows/macos.yml)
 [![Cmake Build](https://github.com/BFU-Graphics/LearnOpenGL/actions/workflows/windows.yml/badge.svg)](https://github.com/BFU-Graphics/LearnOpenGL/actions/workflows/windows.yml)
 
-https://bronzed-lillipilli-ce9.notion.site/15bbbd497d204164a6668bd48df6207b
+https://bronzed-lillipilli-ce9.notion.site/LearnOpenGL-e3f14b48e56143d185795ce62ebc1dac
 
 ## Get Started with OpenGL
 
