@@ -9,6 +9,9 @@ set(SRCS
         04PassValueToShader
         05PassValueToLocation
         06SetupShaderClass
+        06task1
+        06task2
+        06task3
         07SetupTextureClass
         08SetupRenderObjectClass
         09IntroduceMVP
