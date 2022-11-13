@@ -2,6 +2,9 @@ set(SRCS
         00BasicOpenGL
         01InputAndResize
         02HelloTriangle
+        02task1
+        02task2
+        02task3
         03ShadersInFile
         04PassValueToShader
         05PassValueToLocation
