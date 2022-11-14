@@ -15,6 +15,7 @@ public:
 
 public:
     Texture(const std::string &texture_path);
+    Texture(const std::string &texture_path, int flag);
     void bind();
 };
 #endif //LEARNOPENGL_TEXTURE_H

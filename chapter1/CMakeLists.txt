@@ -13,6 +13,12 @@ set(SRCS
         06task2
         06task3
         07SetupTextureClass
+        07task0
+        07task1
+        07task2
+        07task3
+        07task4
+        07task5
         08SetupRenderObjectClass
         09IntroduceMVP
         )
