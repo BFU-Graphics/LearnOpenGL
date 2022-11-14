@@ -4,6 +4,8 @@
 [![Cmake Build](https://github.com/BFU-Graphics/LearnOpenGL/actions/workflows/macos.yml/badge.svg)](https://github.com/BFU-Graphics/LearnOpenGL/actions/workflows/macos.yml)
 [![Cmake Build](https://github.com/BFU-Graphics/LearnOpenGL/actions/workflows/windows.yml/badge.svg)](https://github.com/BFU-Graphics/LearnOpenGL/actions/workflows/windows.yml)
 
+https://bronzed-lillipilli-ce9.notion.site/LearnOpenGL-e3f14b48e56143d185795ce62ebc1dac
+
 ## Get Started with OpenGL
 
 This is a practice repo for mastering Modern OpenGL and learn how to startup a graphics project orgnized by Cmake from scratch.
