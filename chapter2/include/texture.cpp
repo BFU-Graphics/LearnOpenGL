@@ -19,7 +19,14 @@ Texture::Texture(const std::string &texture_path)
     unsigned char *data = stbi_load(texture_path.c_str(), &width, &height, &nr_channels, 0);
     if (data)
     {
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+        GLenum format;
+        if (nr_channels == 1)
+            format = GL_RED;
+        else if (nr_channels == 3)
+            format = GL_RGB;
+        else if (nr_channels == 4)
+            format = GL_RGBA;
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, format, GL_UNSIGNED_BYTE, data);
         glGenerateMipmap(GL_TEXTURE_2D);
     } else
     {

@@ -6,6 +6,7 @@ set(SRCS
         01task3
         02AddMaterial
         02task01
+        03LightingMaps
         )
 
 foreach(SRC ${SRCS})
@@ -15,7 +16,7 @@ foreach(SRC ${SRCS})
             include/texture.h include/texture.cpp
             include/renderable_object.h include/renderable_object.cpp
             include/camera.h include/camera.cpp
-            src/03LightingMaps.cpp)
+            )
     set_target_properties(${SRC} PROPERTIES CXX_STANDARD 20 CXX_EXTENSIONS ON)
     target_include_directories(
             ${SRC}
