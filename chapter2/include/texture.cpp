@@ -15,6 +15,7 @@ Texture::Texture(const std::string &texture_path)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 
     int width, height, nr_channels;
+    stbi_set_flip_vertically_on_load(true);
     unsigned char *data = stbi_load(texture_path.c_str(), &width, &height, &nr_channels, 0);
     if (data)
     {
@@ -32,4 +33,8 @@ Texture::Texture(const std::string &texture_path)
 void Texture::bind()
 {
     glBindTexture(GL_TEXTURE_2D, ID);
+}
+
+Texture::Texture() {
+
 }
