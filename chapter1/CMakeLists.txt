@@ -27,6 +27,8 @@ set(SRCS
         10Enter3D
         11MoreCubes
         11task1
+        12SetupCameraClass
+        12task1
         )
 
 foreach(SRC ${SRCS})
