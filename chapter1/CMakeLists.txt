@@ -21,6 +21,9 @@ set(SRCS
         07task5
         08SetupRenderObjectClass
         09IntroduceMVP
+        09task0
+        09task1
+        09task2
         )
 
 foreach(SRC ${SRCS})
