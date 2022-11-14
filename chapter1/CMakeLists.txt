@@ -24,6 +24,9 @@ set(SRCS
         09task0
         09task1
         09task2
+        10Enter3D
+        11MoreCubes
+        11task1
         )
 
 foreach(SRC ${SRCS})

@@ -22,6 +22,7 @@ public:
 
 public:
     void render(const Shader &shader); // 使用这个shader来渲染这个物体
+    void renderCube(const Shader &shader);
 
 public:
     struct Vertex
