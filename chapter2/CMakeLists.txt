@@ -1,5 +1,9 @@
 set(SRCS
         00BasicLight
+        01PhongLightingModel
+        01task1
+        01task2
+        01task3
         )
 
 foreach(SRC ${SRCS})
@@ -8,7 +12,8 @@ foreach(SRC ${SRCS})
             include/shader.h include/shader.cpp
             include/texture.h include/texture.cpp
             include/renderable_object.h include/renderable_object.cpp
-            include/camera.h include/camera.cpp)
+            include/camera.h include/camera.cpp
+            )
     set_target_properties(${SRC} PROPERTIES CXX_STANDARD 20 CXX_EXTENSIONS ON)
     target_include_directories(
             ${SRC}
