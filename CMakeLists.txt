@@ -18,6 +18,7 @@ set(ASSIMP_BUILD_BLEND_IMPORTER TRUE)
 set(ASSIMP_BUILD_COLLADA_EXPORTER TRUE)
 add_subdirectory("${LEARN_OPENGL_DEPS_DIR}/assimp/" "${CMAKE_CURRENT_BINARY_DIR}/assimp")
 target_include_directories(glad PUBLIC ${LEARN_OPENGL_DEPS_DIR})
+target_compile_options(assimp PRIVATE -Wno-deprecated-declarations)
 
 add_subdirectory(chapter1)
 add_subdirectory(chapter2)
