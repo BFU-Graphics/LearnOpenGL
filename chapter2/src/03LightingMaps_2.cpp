@@ -15,7 +15,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 
 #include "../include/shader.h"
 #include "../include/texture.h"
-#include "../include/renderable_object.h"
+#include "../include/object.h"
 #include "../include/camera.h"
 
 // camera
@@ -100,13 +100,11 @@ auto main() -> int
                                             33, 34, 35,
     };
 
-    RenderableObject cube(vertices.data(), sizeof(vertices), indices.data(), sizeof(indices), MY_TEXTURE_DIR + std::string("container2.png"));
+    Object cube(vertices.data(), sizeof(vertices), indices.data(), sizeof(indices));
+    Texture texture1(MY_TEXTURE_DIR + std::string("container2.png"));
+    Texture texture2(MY_TEXTURE_DIR + std::string("container2_specular.png"));
     ///container2_specular.png这张图片应该是4通道的，在原来的texture类里面只能读取3通道，所以在这一次稍微更改了texture类，包括之前如果出现图片无法读取的情况也可能和通道相关
-    RenderableObject light(vertices.data(), sizeof(vertices), indices.data(), sizeof(indices), MY_TEXTURE_DIR + std::string("container2_specular.png"));
-    ///在这里其实我们可以发现欸我这个贴图贴在灯上为什么效果还对了，很疑惑对吧，主要是这个函数里的texture主要还是调用的Texture类中的函数，表面上看上去是这个纹理和这个物体进行了绑定，实际上只是把纹理导入了进来，真正绑定纹理的操作在后面renderCube函数中
-    ///所以！其实是RenderableObject这个类写的不好！谁规定了一个物体只能有一个材质！
-    ///现在想的解决方案是修改类，类中对于材质也用一个容器存储起来，根据输入材质的数量来进行处理，但是！我不会！……
-    ///要么就彻底分开这么去弄orz
+    Object light(vertices.data(), sizeof(vertices), indices.data(), sizeof(indices));
 
     shader.use();
     shader.set_int("material.diffuse", 0);
@@ -145,8 +143,10 @@ auto main() -> int
         shader.set_mat4("model", model);
 
         glActiveTexture(GL_TEXTURE0);
+        texture1.bind();
         cube.renderCube(shader);
         glActiveTexture(GL_TEXTURE1);
+        texture2.bind();
         cube.renderCube(shader);
 
         //////
