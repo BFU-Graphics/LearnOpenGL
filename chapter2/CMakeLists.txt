@@ -11,6 +11,7 @@ set(SRCS
         03task01
         03task02
         03task03
+        04DirectionLight
         )
 
 foreach(SRC ${SRCS})
