@@ -8,6 +8,7 @@ set(SRCS
         02task01
         03LightingMaps
         03LightingMaps_2
+        03task01
         )
 
 foreach(SRC ${SRCS})
