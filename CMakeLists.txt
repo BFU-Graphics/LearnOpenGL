@@ -21,3 +21,4 @@ target_include_directories(glad PUBLIC ${LEARN_OPENGL_DEPS_DIR})
 
 add_subdirectory(chapter1)
 add_subdirectory(chapter2)
+add_subdirectory(chapter3)
