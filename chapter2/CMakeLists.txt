@@ -13,6 +13,7 @@ set(SRCS
         03task03
         04DirectionLight
         05AttenuationLight
+        06FlashLight
         )
 
 foreach(SRC ${SRCS})
