@@ -2,6 +2,7 @@ set(SRCS
         01DepthTest
         02VisualizationOfDepthBuffer
         03ObjectOutlining
+        04Blending
         )
 foreach(SRC ${SRCS})
     add_executable(${SRC}

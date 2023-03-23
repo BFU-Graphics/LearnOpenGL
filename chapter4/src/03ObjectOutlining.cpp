@@ -114,7 +114,7 @@ auto main() -> int
             5.0f, -0.5f, -5.0f, 1.0f, 1.0f, 1.0f, 2.0f, 2.0f
     };
 
-    std::array<unsigned int, 36> plane_indices = {0, 1, 2,
+    std::array<unsigned int, 6> plane_indices = {0, 1, 2,
                                                   3, 4, 5,
     };
 
@@ -174,7 +174,7 @@ auto main() -> int
         cube.renderCube(shader);
 
         glStencilMask(0x00);
-        glActiveTexture(GL_TEXTURE1);
+        glActiveTexture(GL_TEXTURE0);
         texture2.bind();
         shader.set_mat4("model", glm::mat4(1.0f));
         plane.render(shader);
