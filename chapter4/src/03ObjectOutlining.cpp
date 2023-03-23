@@ -40,6 +40,7 @@ auto main() -> int
     init_glad();
 
     Shader shader(MY_SHADER_DIR + std::string("01shader_vertex.glsl"), MY_SHADER_DIR + std::string("01shader_fragment.glsl"));
+    Shader OutlineShader(MY_SHADER_DIR + std::string("01shader_vertex.glsl"), MY_SHADER_DIR + std::string("03outline_shader_fragment.glsl"));
 
     ///这里没有用到的是color,懒得删了
     std::array<float, 288> cube_vertices = {
@@ -89,17 +90,17 @@ auto main() -> int
     };
 
     std::array<unsigned int, 36> cube_indices = {0, 1, 2,
-                                            3, 4, 5,
-                                            6, 7, 8,
-                                            9, 10, 11,
-                                            12, 13, 14,
-                                            15, 16, 17,
-                                            18, 19, 20,
-                                            21, 22, 23,
-                                            24, 25, 26,
-                                            27, 28, 29,
-                                            30, 31, 32,
-                                            33, 34, 35,
+                                                 3, 4, 5,
+                                                 6, 7, 8,
+                                                 9, 10, 11,
+                                                 12, 13, 14,
+                                                 15, 16, 17,
+                                                 18, 19, 20,
+                                                 21, 22, 23,
+                                                 24, 25, 26,
+                                                 27, 28, 29,
+                                                 30, 31, 32,
+                                                 33, 34, 35,
     };
 
     std::array<float, 48> plane_vertices = {
@@ -114,7 +115,7 @@ auto main() -> int
     };
 
     std::array<unsigned int, 36> plane_indices = {0, 1, 2,
-                                                 3, 4, 5,
+                                                  3, 4, 5,
     };
 
 
@@ -130,42 +131,39 @@ auto main() -> int
     {
         process_input(window);
         glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-        /// 如果不更新深度缓存，那会发生错误啥也看不见
-        //glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
         glEnable(GL_DEPTH_TEST);
-        /// 深度测试
-        //glDepthFunc(GL_ALWAYS); // 永远通过深度测试
-        /// 深度测试将会永远通过，所以最后绘制的片段将会总是会渲染在之前绘制片段的上面，即使之前绘制的片段本就应该渲染在最前面。
-        /// 因为我们是最后渲染地板的，它会覆盖所有的箱子片段
-        /// 也可以在底下的代码中更改渲染顺序看一下变化
-        //glDepthFunc(GL_NOTEQUAL); // 在片段深度值不等于缓冲区的深度值时通过测试
+        glDepthFunc(GL_LESS);
 
-        glDepthFunc(GL_LESS); // 在片段深度值小于缓冲的深度值时通过测试
-        /// 正常情况
-        //glDepthFunc(GL_LEQUAL); // 在片段深度值小于等于缓冲区的深度值时通过测试
-
-        /// 下面这四个啥也看不见
-        //glDepthFunc(GL_NEVER); // 永远不通过深度测试
-        //glDepthFunc(GL_EQUAL); // 在片段深度值等于缓冲区的深度值时通过测试
-        //glDepthFunc(GL_GREATER); // 在片段深度值大于缓冲区的深度值时通过测试
-        //glDepthFunc(GL_GEQUAL); // 在片段深度值大于等于缓冲区的深度值时通过测试
-        ///
+        glEnable(GL_STENCIL_TEST);
+        glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+        glStencilOp(GL_KEEP, GL_KEEP, GL_REPLACE);
 
         auto currentFrame = static_cast<float>(glfwGetTime());
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
-        shader.use();
+        OutlineShader.use();
         glm::mat4 model = glm::mat4(1.0f);
         glm::mat4 view = camera.GetViewMatrix();
         glm::mat4 projection = glm::perspective(glm::radians(camera.Zoom), 800.f / 600.f, 0.1f, 100.0f);
-        shader.set_mat4("projection", projection);
-        shader.set_mat4("view", view);
+        OutlineShader.set_mat4("projection", projection);
+        OutlineShader.set_mat4("view", view);
 
+        shader.use();
+        shader.set_mat4("view", view);
+        shader.set_mat4("projection", projection);
+
+        /// 1st. 在绘制（需要添加轮廓的）物体之前，将模板函数设置为GL_ALWAYS，每当物体的片段被渲染时，将模板缓冲更新为1。
+        glStencilFunc(GL_ALWAYS, 1, 0xFF);
+        /// 2nd. 渲染物体
+        glStencilMask(0xFF);
         glActiveTexture(GL_TEXTURE0);
         texture1.bind();
+        model = glm::mat4(1.0f);
+        /// 虽然说第一次给model赋值的时候其实不用设置为（1,1,1）的，但是我后面copy这段代码在下面的时候！不重新赋个（1,1,1），就会在原来model的基础上计算然后就结果错了
+        /// 结果就是青色的立方体和本来的立方体完全分开了，不过这也说明其实这个边界也就是渲染了一个相同的物体，不过是尺寸大了一圈
         model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
         shader.set_mat4("model", model);
         cube.renderCube(shader);
@@ -175,10 +173,39 @@ auto main() -> int
         shader.set_mat4("model", model);
         cube.renderCube(shader);
 
+        glStencilMask(0x00);
         glActiveTexture(GL_TEXTURE1);
         texture2.bind();
         shader.set_mat4("model", glm::mat4(1.0f));
         plane.render(shader);
+
+        /// 3rd 禁用模板写入以及深度测试、将每个物体缩放一点点、再次绘制物体，但只在它们片段的模板值不等于1时才绘制
+        /// 只需要再次绘制cube就可以了 我们不需要plane亮边效果
+        glStencilFunc(GL_NOTEQUAL, 1, 0xFF);
+        glStencilMask(0x00);
+        glDisable(GL_DEPTH_TEST);
+
+        OutlineShader.use();
+        float scale = 1.1f;
+
+        glActiveTexture(GL_TEXTURE0);
+        texture1.bind();
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(-1.0f, 0.0f, -1.0f));
+        model = glm::scale(model, glm::vec3(scale, scale, scale));
+        shader.set_mat4("model", model);
+        cube.renderCube(OutlineShader);
+
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, glm::vec3(2.0f, 0.0f, 0.0f));
+        model = glm::scale(model, glm::vec3(scale, scale, scale));
+        shader.set_mat4("model", model);
+        cube.renderCube(OutlineShader);
+
+        /// 4th. 再次启用模板写入和深度测试
+        glStencilMask(0xFF);
+        glStencilFunc(GL_ALWAYS, 0, 0xFF);
+        glEnable(GL_DEPTH_TEST);
 
         glfwSwapBuffers(window);
         glfwPollEvents();
