@@ -3,6 +3,7 @@ set(SRCS
         02VisualizationOfDepthBuffer
         03ObjectOutlining
         04Blending
+        05RenderTranslucentTexture
         )
 foreach(SRC ${SRCS})
     add_executable(${SRC}
