@@ -1,5 +1,6 @@
 set(SRCS
         01DepthTest
+        02VisualizationOfDepthBuffer
         )
 foreach(SRC ${SRCS})
     add_executable(${SRC}
