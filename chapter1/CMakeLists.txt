@@ -2,13 +2,33 @@ set(SRCS
         00BasicOpenGL
         01InputAndResize
         02HelloTriangle
+        02task1
+        02task2
+        02task3
         03ShadersInFile
         04PassValueToShader
         05PassValueToLocation
         06SetupShaderClass
+        06task1
+        06task2
+        06task3
         07SetupTextureClass
+        07task0
+        07task1
+        07task2
+        07task3
+        07task4
+        07task5
         08SetupRenderObjectClass
         09IntroduceMVP
+        09task0
+        09task1
+        09task2
+        10Enter3D
+        11MoreCubes
+        11task1
+        12SetupCameraClass
+        12task1
         )
 
 foreach(SRC ${SRCS})

@@ -77,6 +77,6 @@ auto main() -> int
         glfwSwapBuffers(window); // 交换帧缓冲
         glfwPollEvents(); // 读取事件操作（比如键盘输入等）
     }
-
+    glfwTerminate();
     return 0;
 }

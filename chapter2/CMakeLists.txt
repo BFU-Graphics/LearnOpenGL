@@ -1,9 +1,31 @@
 set(SRCS
         00BasicLight
+        01PhongLightingModel
+        01task1
+        01task2
+        01task3
+        02AddMaterial
+        02task01
+        03LightingMaps
+        03LightingMaps_2
+        03task01
+        03task02
+        03task03
+        04DirectionLight
+        05AttenuationLight
+        06FlashLight
+        07MultipleLights
+        07task01desert
         )
 
 foreach(SRC ${SRCS})
-    add_executable(${SRC} src/${SRC}.cpp include/shader.h include/shader.cpp include/texture.h include/texture.cpp include/renderable_object.h include/renderable_object.cpp)
+    add_executable(${SRC}
+            src/${SRC}.cpp
+            include/shader.h include/shader.cpp
+            include/texture.h include/texture.cpp
+            include/renderable_object.h include/renderable_object.cpp
+            include/camera.h include/camera.cpp
+            include/object.h include/object.cpp)
     set_target_properties(${SRC} PROPERTIES CXX_STANDARD 20 CXX_EXTENSIONS ON)
     target_include_directories(
             ${SRC}
