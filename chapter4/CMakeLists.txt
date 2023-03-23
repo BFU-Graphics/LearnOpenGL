@@ -4,6 +4,7 @@ set(SRCS
         03ObjectOutlining
         04Blending
         05RenderTranslucentTexture
+        06FaceCulling
         )
 foreach(SRC ${SRCS})
     add_executable(${SRC}
